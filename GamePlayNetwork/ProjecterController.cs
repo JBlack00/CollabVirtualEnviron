@@ -29,20 +29,20 @@ namespace NATTraversal
 
             if (isServer)
             {
-             //   ProjecterScreen.GetComponent<Image>().sprite = ProjecterSprites[CurrentImage];
+                CmdSendImage(CurrentImage);
             }
 
-            
+          
 
-            //   CmdSendImage(CurrentImage);
+               
 
 
 
 
             //  RpcClientUpdateImage(CurrentImage);
 
-           
-          
+
+
         }
         [Command]
         public void CmdSendImage(int Value)
@@ -54,17 +54,9 @@ namespace NATTraversal
         [ClientRpc]
         public void RpcClientUpdateImage(int value)
         {
-            if (value> ProjecterSprites.Length-1)
-            {
-                value = 0;
-              
-            }
-            if (value < 0)
-            {
-                value = ProjecterSprites.Length - 1;
-            }
-            CurrentImage = value;
-          //  Debug.Log("ClientRpc CALLESD");
+            ProjecterScreen.GetComponent<Image>().sprite = ProjecterSprites[value];
+            // CurrentImage = value;
+            //  Debug.Log("ClientRpc CALLESD");
         }
 
         public void changeImage(int value)
@@ -91,7 +83,7 @@ namespace NATTraversal
 
         public void LastImage()
         {
-            CurrentImage--;
+            //CurrentImage--;
         }
     }
 }

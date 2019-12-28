@@ -91,8 +91,18 @@ namespace NATTraversal
         {
             manager.StartHost();
         }
+        public void StopHost()
+        {
+            manager.StopHost();
+
+        }
         public void StartClient()
         {
+            manager.StartClient();
+        }
+        public void StartClientToLan(Text textInput)
+        {
+            manager.networkAddress = textInput.text;
             manager.StartClient();
         }
         public void StartServer()
